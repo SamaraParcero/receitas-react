@@ -158,22 +158,4 @@ o celular e as media queries acrescentam os ajustes das telas maiores.
 
 ---
 
-## Roteiro sugerido para o vídeo
 
-1. **Abrir o site e mostrar a navegação** — clicar em Início, Catálogo e Ajuda,
-   observando que a página não recarrega (React Router).
-2. **Catálogo** — abrir o menu suspenso, filtrar por "Sobremesa", mostrar que a
-   contagem muda e que a paginação some; voltar para "Todas" e navegar entre as
-   páginas 1, 2 e 3 mostrando os botões desabilitados nas pontas.
-3. **Favoritar uma receita** — mostrar o toast aparecendo e o contador do topo
-   subindo (este é o momento de explicar a Context API).
-4. **Abrir uma receita** — trocar entre as abas e ir marcando as etapas do
-   preparo para a barra de progresso encher; ao chegar em 100% aparece o toast.
-5. **Ajuda** — abrir e fechar as perguntas do acordeão; enviar o formulário com
-   menos de 10 caracteres (toast de erro) e depois com um texto válido (barra de
-   progresso + toast de sucesso).
-6. **Responsividade** — abrir o DevTools (F12), ativar o modo dispositivo e
-   mostrar o layout em celular, tablet e desktop.
-7. **Código** — abrir `App.jsx` (rotas e provedores), depois um componente
-   simples como `BarraDeProgresso.jsx` (só props), um com estado como
-   `Abas.jsx` (useState) e um com `useEffect` como `MenuSuspenso.jsx`.
