@@ -1,26 +1,16 @@
 import { createContext, useContext, useState } from 'react'
 import { useToast } from './ContextoToast'
 
-/**
- * DESAFIO EXTRA - ESTADO GLOBAL COM CONTEXT API (parte 2 de 2)
- *
- * Guarda os ids das receitas favoritadas. É o exemplo clássico de
- * dois componentes NÃO relacionados compartilhando dados:
- *   - o cartão da receita (no catálogo) marca o favorito;
- *   - o menu de navegação, no topo, mostra o total de favoritos.
- * Eles não são pai e filho, então props não resolveriam.
- */
 const ContextoFavoritos = createContext(null)
 
 export function ProvedorFavoritos({ children }) {
   const [idsFavoritos, setIdsFavoritos] = useState([])
-  const { mostrarToast } = useToast() // reaproveita o outro contexto
+  const { mostrarToast } = useToast()
 
   function ehFavorito(id) {
     return idsFavoritos.includes(id)
   }
 
-  // Adiciona ou remove o favorito e avisa o usuário com um toast.
   function alternarFavorito(receita) {
     if (ehFavorito(receita.id)) {
       setIdsFavoritos((anteriores) => anteriores.filter((item) => item !== receita.id))

@@ -1,19 +1,4 @@
-/**
- * ILUSTRAÇÕES DAS RECEITAS
- *
- * Substituem os emojis que identificavam cada prato. São desenhos simples,
- * em duas cores, usando as MESMAS variáveis de cor do index.css
- * (var(--cor-rosa-bebe) e var(--cor-marca)). Ou seja: se a paleta do site
- * mudar, as ilustrações mudam junto, sem precisar editar nada aqui.
- *
- * Props recebidas:
- *   nome    = chave do desenho (campo "icone" de cada receita)
- *   tamanho = largura e altura em pixels
- */
-
-// Cada chave guarda apenas as formas internas do SVG.
 const DESENHOS = {
-  // Panela com tampa: pratos principais cozidos
   panela: (
     <>
       <path d="M10 21h28v11a5 5 0 0 1-5 5H15a5 5 0 0 1-5-5z" />
@@ -24,7 +9,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Bolo com cobertura e cereja
   bolo: (
     <>
       <path d="M11 26h26v9a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3z" />
@@ -37,7 +21,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Triângulo de queijo com furinhos
   queijo: (
     <>
       <path d="M9 34 36 15a3 3 0 0 1 3 3v16z" />
@@ -47,7 +30,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Tigela cheia: entradas e saladas
   salada: (
     <>
       <circle cx="17" cy="22" r="4.5" fill="var(--cor-marca)" stroke="none" />
@@ -58,7 +40,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Copo alto com canudo: bebidas geladas
   copo: (
     <>
       <path d="M16 16h16l-2.2 20.5a2.5 2.5 0 0 1-2.5 2.2h-6.6a2.5 2.5 0 0 1-2.5-2.2z" />
@@ -67,7 +48,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Doce redondo no forminha: brigadeiro e companhia
   doce: (
     <>
       <path d="M14 26h20l-2.5 10.5a2 2 0 0 1-2 1.5h-11a2 2 0 0 1-2-1.5z" />
@@ -78,7 +58,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Massa dobrada ao meio: tapioca e lanches
   tapioca: (
     <>
       <path d="M9 34a15 15 0 0 1 30 0z" />
@@ -87,7 +66,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Tigela fumegante: caldos e sopas
   sopa: (
     <>
       <path d="M8 25h32a16 16 0 0 1-32 0z" />
@@ -97,7 +75,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Biscoito com gotas de chocolate
   cookie: (
     <>
       <circle cx="24" cy="25" r="13" />
@@ -107,7 +84,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Fatia de pão com tomates por cima: bruschetta
   pao: (
     <>
       <path d="M10 26h28v8a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3z" />
@@ -118,7 +94,6 @@ const DESENHOS = {
     </>
   ),
 
-  // Xícara com pires e vapor
   cafe: (
     <>
       <path d="M12 19h19v8a9.5 9.5 0 0 1-19 0z" />
@@ -131,7 +106,6 @@ const DESENHOS = {
 }
 
 function IconeReceita({ nome, tamanho = 44 }) {
-  // Se a receita trouxer uma chave desconhecida, cai no desenho da panela.
   const desenho = DESENHOS[nome] || DESENHOS.panela
 
   return (

@@ -1,5 +1,3 @@
-// Lista fixa de receitas usada pela aplicação.
-// Em um projeto real estes dados viriam de uma API.
 export const RECEITAS = [
   {
     id: 1,
@@ -331,7 +329,6 @@ export const RECEITAS = [
   },
 ]
 
-// Categorias disponíveis, usadas pelo menu suspenso de filtro.
 export const CATEGORIAS = [
   'Todas',
   'Entrada',

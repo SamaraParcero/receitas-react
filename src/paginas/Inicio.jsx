@@ -5,19 +5,12 @@ import { useFavoritos } from '../contextos/ContextoFavoritos'
 import { useToast } from '../contextos/ContextoToast'
 import { RECEITAS } from '../dados/receitas'
 
-/**
- * PÁGINA INICIAL (rota "/")
- *
- * Mostra a apresentação do site, três receitas em destaque e uma barra
- * de progresso ligada ao estado global de favoritos.
- */
 function Inicio() {
   const { totalDeFavoritos } = useFavoritos()
   const { mostrarToast } = useToast()
 
   const receitasEmDestaque = RECEITAS.slice(0, 3)
 
-  // Meta fictícia: salvar 5 receitas completa a "coleção da semana".
   const META_DE_FAVORITOS = 5
   const progressoDaMeta = (totalDeFavoritos / META_DE_FAVORITOS) * 100
 
@@ -65,7 +58,6 @@ function Inicio() {
           completo. Já são {totalDeFavoritos} de {META_DE_FAVORITOS}.
         </p>
 
-        {/* COMPONENTE: barra de progresso reagindo ao estado global */}
         <div className="painel">
           <BarraDeProgresso
             valor={progressoDaMeta}

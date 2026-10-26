@@ -1,10 +1,5 @@
 import { Link } from 'react-router-dom'
 
-/**
- * PÁGINA 404 (rota "*")
- *
- * Exibida quando a URL digitada não corresponde a nenhuma rota.
- */
 function NaoEncontrada() {
   return (
     <section className="secao conteiner centralizado">

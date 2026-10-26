@@ -1,17 +1,3 @@
-/**
- * ÍCONES DA INTERFACE
- *
- * Em vez de emojis (que mudam de desenho conforme o sistema do usuário),
- * cada ícone é um SVG escrito à mão.
- *
- * Todos usam stroke="currentColor": o traço assume a cor do texto do
- * elemento pai, então os ícones acompanham o tema rosa automaticamente.
- *
- * Todos são decorativos, por isso levam aria-hidden="true" — quem usa
- * leitor de tela ouve o texto ao lado, não o desenho.
- */
-
-// Componente base: concentra os atributos repetidos em um lugar só.
 function IconeBase({ tamanho = 20, children, ...resto }) {
   return (
     <svg
@@ -31,8 +17,6 @@ function IconeBase({ tamanho = 20, children, ...resto }) {
     </svg>
   )
 }
-
-/* ---- Setas (acordeão, menu suspenso, paginação e link de voltar) ---- */
 
 export function IconeSetaBaixo(props) {
   return (
@@ -57,8 +41,6 @@ export function IconeSetaDireita(props) {
     </IconeBase>
   )
 }
-
-/* ---- Estados (toasts e opção selecionada no menu suspenso) ---- */
 
 export function IconeCheck(props) {
   return (
@@ -86,9 +68,6 @@ export function IconeInfo(props) {
   )
 }
 
-/* ---- Favoritos ---- */
-
-// O coração fica vazado quando não é favorito e preenchido quando é.
 export function IconeCoracao({ preenchido = false, ...props }) {
   return (
     <IconeBase fill={preenchido ? 'currentColor' : 'none'} {...props}>
@@ -96,8 +75,6 @@ export function IconeCoracao({ preenchido = false, ...props }) {
     </IconeBase>
   )
 }
-
-/* ---- Informações da receita ---- */
 
 export function IconeRelogio(props) {
   return (
@@ -108,7 +85,6 @@ export function IconeRelogio(props) {
   )
 }
 
-// Barrinhas crescentes, representando o nível de dificuldade.
 export function IconeDificuldade(props) {
   return (
     <IconeBase {...props}>
@@ -119,7 +95,6 @@ export function IconeDificuldade(props) {
   )
 }
 
-// Lista numerada, representando as etapas do preparo.
 export function IconeEtapas(props) {
   return (
     <IconeBase {...props}>
@@ -133,9 +108,6 @@ export function IconeEtapas(props) {
   )
 }
 
-/* ---- Marca ---- */
-
-// Chapéu de chef usado como logotipo no cabeçalho.
 export function IconeChef({ tamanho = 28, ...props }) {
   return (
     <IconeBase tamanho={tamanho} {...props}>

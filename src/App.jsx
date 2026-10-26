@@ -8,17 +8,6 @@ import DetalheReceita from './paginas/DetalheReceita'
 import Inicio from './paginas/Inicio'
 import NaoEncontrada from './paginas/NaoEncontrada'
 
-/**
- * COMPONENTE PRINCIPAL
- *
- * É ele que organiza toda a aplicação:
- *   1. envolve tudo nos provedores de estado global (Context API);
- *   2. monta a estrutura fixa da página (cabeçalho e rodapé);
- *   3. define quais rotas existem e qual página cada uma renderiza.
- *
- * Observação sobre a ordem: o ProvedorFavoritos usa o toast para avisar
- * quando uma receita é salva, por isso ele fica DENTRO do ProvedorToast.
- */
 function App() {
   return (
     <ProvedorToast>
@@ -29,10 +18,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/catalogo" element={<Catalogo />} />
-            {/* ":id" é um parâmetro dinâmico lido com useParams */}
+
             <Route path="/receita/:id" element={<DetalheReceita />} />
             <Route path="/ajuda" element={<Ajuda />} />
-            {/* "*" captura qualquer endereço que não exista */}
+
             <Route path="*" element={<NaoEncontrada />} />
           </Routes>
         </main>

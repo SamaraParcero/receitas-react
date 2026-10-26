@@ -1,21 +1,9 @@
 import { useState } from 'react'
 import { IconeSetaBaixo } from './Icone'
 
-/**
- * COMPONENTE 1 - ACORDEÃO
- *
- * Seções de conteúdo que abrem e fecham. Apenas um item fica aberto por vez.
- *
- * Props recebidas:
- *   itens = [{ titulo: string, conteudo: string }]
- *
- * Estado local:
- *   indiceAberto = qual item está aberto (null = todos fechados)
- */
 function Acordeao({ itens }) {
   const [indiceAberto, setIndiceAberto] = useState(null)
 
-  // Clicar no item aberto fecha ele; clicar em outro troca o item aberto.
   function alternarItem(indice) {
     setIndiceAberto(indiceAberto === indice ? null : indice)
   }
@@ -37,7 +25,7 @@ function Acordeao({ itens }) {
                 id={`botao-acordeao-${indice}`}
               >
                 <span>{item.titulo}</span>
-                {/* A seta gira 180 graus quando o item está aberto */}
+
                 <span
                   className={`acordeao__seta ${estaAberto ? 'acordeao__seta--aberta' : ''}`}
                 >
@@ -46,7 +34,6 @@ function Acordeao({ itens }) {
               </button>
             </h3>
 
-            {/* O conteúdo existe sempre no HTML; a altura é animada pelo CSS */}
             <div
               className={`acordeao__corpo ${estaAberto ? 'acordeao__corpo--aberto' : ''}`}
               id={`painel-acordeao-${indice}`}

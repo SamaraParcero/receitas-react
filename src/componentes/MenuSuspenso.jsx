@@ -1,30 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { IconeCheck, IconeSetaBaixo } from './Icone'
 
-/**
- * COMPONENTE 5 - MENU SUSPENSO (DROPDOWN)
- *
- * Botão que revela uma lista de opções. Fecha ao escolher uma opção,
- * ao clicar fora dele ou ao apertar a tecla Esc.
- *
- * Props recebidas:
- *   rotulo       = texto do rótulo acima do botão
- *   opcoes       = array de strings
- *   selecionada  = opção escolhida no momento
- *   onSelecionar = callback chamado com a opção clicada
- *
- * Estado local:
- *   aberto = o menu está visível?
- */
 function MenuSuspenso({ rotulo, opcoes, selecionada, onSelecionar }) {
   const [aberto, setAberto] = useState(false)
 
-  // useRef guarda uma referência ao elemento real na tela, para que
-  // possamos saber se o clique aconteceu dentro ou fora do menu.
   const referenciaMenu = useRef(null)
 
-  // useEffect: liga os "ouvintes" de evento quando o menu abre
-  // e os desliga quando o menu fecha (função de limpeza do return).
   useEffect(() => {
     if (!aberto) return
 
@@ -41,7 +22,6 @@ function MenuSuspenso({ rotulo, opcoes, selecionada, onSelecionar }) {
     document.addEventListener('mousedown', tratarCliqueFora)
     document.addEventListener('keydown', tratarEsc)
 
-    // Limpeza: evita vazamento de memória ao desmontar o componente.
     return () => {
       document.removeEventListener('mousedown', tratarCliqueFora)
       document.removeEventListener('keydown', tratarEsc)
@@ -50,7 +30,7 @@ function MenuSuspenso({ rotulo, opcoes, selecionada, onSelecionar }) {
 
   function escolherOpcao(opcao) {
     onSelecionar(opcao)
-    setAberto(false) // fecha o menu após a escolha
+    setAberto(false)
   }
 
   return (
@@ -73,7 +53,6 @@ function MenuSuspenso({ rotulo, opcoes, selecionada, onSelecionar }) {
         </span>
       </button>
 
-      {/* Renderização condicional: a lista só existe quando aberto = true */}
       {aberto && (
         <ul className="dropdown__lista" role="listbox" aria-labelledby="rotulo-dropdown">
           {opcoes.map((opcao) => {

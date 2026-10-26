@@ -4,7 +4,6 @@ import BarraDeProgresso from '../componentes/BarraDeProgresso'
 import MenuSuspenso from '../componentes/MenuSuspenso'
 import { useToast } from '../contextos/ContextoToast'
 
-// Perguntas frequentes entregues ao Acordeão por props.
 const PERGUNTAS_FREQUENTES = [
   {
     titulo: 'As receitas servem quantas pessoas?',
@@ -35,13 +34,6 @@ const PERGUNTAS_FREQUENTES = [
 
 const ASSUNTOS = ['Dúvida sobre receita', 'Enviar receita', 'Erro no site', 'Elogio']
 
-/**
- * PÁGINA DE AJUDA (rota "/ajuda")
- *
- * Reúne o ACORDEÃO com as perguntas frequentes e um formulário de contato
- * que reaproveita o MENU SUSPENSO e a BARRA DE PROGRESSO — o mesmo
- * componente usado no catálogo, agora com outras props.
- */
 function Ajuda() {
   const { mostrarToast } = useToast()
 
@@ -50,8 +42,6 @@ function Ajuda() {
   const [enviando, setEnviando] = useState(false)
   const [progressoEnvio, setProgressoEnvio] = useState(0)
 
-  // useEffect + setInterval: simula o envio do formulário avançando
-  // a barra de progresso de 10 em 10 por cento.
   useEffect(() => {
     if (!enviando) return
 
@@ -59,11 +49,9 @@ function Ajuda() {
       setProgressoEnvio((anterior) => Math.min(100, anterior + 10))
     }, 180)
 
-    // Limpeza: desliga o cronômetro quando o envio termina.
     return () => clearInterval(intervalo)
   }, [enviando])
 
-  // Quando a barra chega a 100%, encerra o envio e notifica o usuário.
   useEffect(() => {
     if (enviando && progressoEnvio >= 100) {
       setEnviando(false)
@@ -72,7 +60,6 @@ function Ajuda() {
     }
   }, [enviando, progressoEnvio, mostrarToast])
 
-  // Manipulação de evento: intercepta o envio do formulário.
   function tratarEnvio(evento) {
     evento.preventDefault()
 
@@ -95,7 +82,6 @@ function Ajuda() {
           Reunimos as dúvidas mais comuns de quem está começando na cozinha.
         </p>
 
-        {/* COMPONENTE: acordeão com as perguntas frequentes */}
         <Acordeao itens={PERGUNTAS_FREQUENTES} />
       </section>
 
@@ -108,7 +94,6 @@ function Ajuda() {
         </p>
 
         <form className="painel formulario" onSubmit={tratarEnvio}>
-          {/* COMPONENTE: o mesmo menu suspenso do catálogo, com outras props */}
           <MenuSuspenso
             rotulo="Assunto da mensagem"
             opcoes={ASSUNTOS}
@@ -132,7 +117,6 @@ function Ajuda() {
             />
           </div>
 
-          {/* A barra de progresso só aparece durante o envio */}
           {enviando && (
             <BarraDeProgresso valor={progressoEnvio} rotulo="Enviando mensagem" />
           )}

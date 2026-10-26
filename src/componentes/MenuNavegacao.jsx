@@ -2,19 +2,9 @@ import { NavLink } from 'react-router-dom'
 import { useFavoritos } from '../contextos/ContextoFavoritos'
 import { IconeChef, IconeCoracao } from './Icone'
 
-/**
- * Cabeçalho com a navegação principal.
- *
- * Usa NavLink do React Router: ele aplica a classe "ativo" automaticamente
- * no link da página que está aberta.
- *
- * Lê o total de favoritos do contexto global, mesmo sem ser pai ou filho
- * do componente que marca os favoritos.
- */
 function MenuNavegacao() {
   const { totalDeFavoritos } = useFavoritos()
 
-  // Função usada pelo NavLink para montar a classe CSS do link.
   const classeDoLink = ({ isActive }) =>
     `navegacao__link ${isActive ? 'navegacao__link--ativo' : ''}`
 

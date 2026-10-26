@@ -14,40 +14,28 @@ import { useFavoritos } from '../contextos/ContextoFavoritos'
 import { useToast } from '../contextos/ContextoToast'
 import { RECEITAS } from '../dados/receitas'
 
-/**
- * PÁGINA DE DETALHE (rota "/receita/:id")
- *
- * useParams lê o ":id" que está na URL e descobre qual receita mostrar.
- * Aqui ficam as ABAS (Ingredientes / Preparo / Dicas) e a BARRA DE
- * PROGRESSO, que avança conforme o usuário marca as etapas feitas.
- */
 function DetalheReceita() {
   const { id } = useParams()
   const { mostrarToast } = useToast()
   const { ehFavorito, alternarFavorito } = useFavoritos()
 
-  // O id da URL vem como texto, por isso o Number().
   const receita = RECEITAS.find((item) => item.id === Number(id))
 
-  // Estado: quais etapas do preparo já foram marcadas.
   const [etapasFeitas, setEtapasFeitas] = useState([])
 
   const totalDeEtapas = receita ? receita.preparo.length : 0
   const progresso = totalDeEtapas ? (etapasFeitas.length / totalDeEtapas) * 100 : 0
 
-  // Se o usuário navegar para outra receita, limpa as marcações.
   useEffect(() => {
     setEtapasFeitas([])
   }, [id])
 
-  // Avisa com um toast quando todas as etapas são concluídas.
   useEffect(() => {
     if (totalDeEtapas > 0 && etapasFeitas.length === totalDeEtapas) {
       mostrarToast('Preparo concluído! Bom apetite.', 'sucesso')
     }
   }, [etapasFeitas.length, totalDeEtapas, mostrarToast])
 
-  // Receita inexistente (ex.: /receita/999)
   if (!receita) {
     return (
       <section className="secao conteiner">
@@ -70,8 +58,6 @@ function DetalheReceita() {
     )
   }
 
-  // Conteúdo de cada aba, montado como um array de objetos e
-  // entregue ao componente Abas por props.
   const abasDaReceita = [
     {
       rotulo: 'Ingredientes',
@@ -159,7 +145,6 @@ function DetalheReceita() {
         </div>
       </header>
 
-      {/* COMPONENTE: barra de progresso das etapas do preparo */}
       <div className="painel">
         <BarraDeProgresso
           valor={progresso}
@@ -167,7 +152,6 @@ function DetalheReceita() {
         />
       </div>
 
-      {/* COMPONENTE: abas com o conteúdo da receita */}
       <Abas abas={abasDaReceita} />
     </article>
   )
